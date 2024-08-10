@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MinimalApi.DataAccess;
+using MongoDB.Driver;
 
 namespace MinimalApi.Health
 {
@@ -12,7 +13,14 @@ namespace MinimalApi.Health
             try
             {
                 var dbNames = await mongoService.Client.ListDatabaseNamesAsync(token);
-                return await Task.FromResult(HealthCheckResult.Healthy("Database connection is healthy"));
+                
+                // it is not recommended to display database names
+                // This is just showing how we can pass data to the response context and have it written to the response
+                Dictionary<string, object> data = new()
+                {
+                    { "DB_Names", dbNames.ToList() }
+                };
+                return HealthCheckResult.Healthy("Database Connection is Healthy", data);
             }
             catch (Exception ex)
             {
