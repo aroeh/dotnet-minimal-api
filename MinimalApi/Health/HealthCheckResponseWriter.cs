@@ -6,8 +6,6 @@ namespace MinimalApi.Health
 {
     public static class HealthCheckResponseWriter
     {
-        //private const string DEFAULT_CONTENT_TYPE = "application/json";
-
         public static Task WriteCustomHealthCheckResponse(HttpContext httpContext, HealthReport healthReport)
         {
             httpContext.Response.ContentType = "application/json; charset=utf-8";
