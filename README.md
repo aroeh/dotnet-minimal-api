@@ -18,6 +18,7 @@ This project is intended to be used for educational and reference purposes and w
 - MSTest tests - only on V2 Restuarant Routes to show syntax
 - Collecting Coverage Locally without needing Visual Studio Enterprise
 - TODO: Open API Documentation on endpoints
+- TODO: High Performance Logging
 
 # Dependencies
 - MongoDB

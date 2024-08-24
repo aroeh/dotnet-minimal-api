@@ -1,19 +1,15 @@
-﻿using MongoDB.Driver;
+using MongoDB.Driver;
 using MinimalApi.Models;
 
 namespace MinimalApi.DataAccess
 {
-    public interface IMongoService
+    public interface IDatabaseWrapper
     {
         /// <summary>
-        /// Instance of the MongoClient object
+        /// Checks the connection to the database and returns basic data parameters
         /// </summary>
-        MongoClient Client { get; }
-
-        /// <summary>
-        /// Database instance from the client connection
-        /// </summary>
-        IMongoDatabase Database { get; }
+        /// <returns>Dictionary<string, object></returns>
+        Task<Dictionary<string, object>> ConnectionEstablished();
 
         /// <summary>
         /// Finds items in the specified collection using a filter definition
